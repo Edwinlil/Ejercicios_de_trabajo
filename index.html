@@ -3,314 +3,434 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Viejo Hever | Streetwear Oficial</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;800&family=Teko:wght@400;600&display=swap" rel="stylesheet">
+    <title>EL VIEJO HEVER | La Grasa Pura 🔥</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&family=Teko:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     
     <style>
-        /* --- ESTILO URBANO PRO --- */
+        /* --- CORE STYLES --- */
         :root {
-            --bg-color: #080808;       /* Negro Profundo */
-            --card-bg: #141414;        /* Gris Oscuro */
-            --accent: #D4AF37;         /* Oro Metálico (Lujo) */
-            --text-main: #ffffff;
-            --text-sec: #aaaaaa;
+            --bg-color: #000000;
+            --surface: #111111;
+            --accent: #FFD700; /* Oro */
+            --accent-glow: rgba(255, 215, 0, 0.3);
+            --text: #ffffff;
+            --gray: #888888;
             --whatsapp: #25D366;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
         body {
             background-color: var(--bg-color);
-            color: var(--text-main);
+            color: var(--text);
             font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
         }
 
-        /* --- NAVBAR FLOTANTE --- */
+        /* --- MARQUEE (CINTA CORREDIZA) --- */
+        .marquee-container {
+            background: var(--accent);
+            color: black;
+            padding: 5px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1002;
+            font-weight: 800;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        
+        .marquee-content {
+            display: inline-block;
+            animation: scroll 20s linear infinite;
+        }
+        
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* --- NAVBAR --- */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 5%;
-            background: rgba(8, 8, 8, 0.9);
+            padding: 15px 5%;
+            background: rgba(0,0,0,0.9);
             backdrop-filter: blur(10px);
             position: fixed;
             width: 100%;
-            top: 0;
+            top: 30px; /* Debajo del marquee */
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid #222;
         }
 
         .brand {
             font-family: 'Teko', sans-serif;
-            font-size: 2.5rem;
-            text-transform: uppercase;
+            font-size: 2rem;
             letter-spacing: 2px;
-            font-weight: 600;
-            color: var(--text-main);
+            color: white;
         }
-        
         .brand span { color: var(--accent); }
 
-        .menu-icon { font-size: 1.5rem; cursor: pointer; }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
 
-        /* --- HERO (PORTADA) --- */
+        /* --- HERO SECTION --- */
         .hero {
-            height: 90vh;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3), var(--bg-color)),
-                        url('https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?q=80&w=1974&auto=format&fit=crop');
+            height: 100vh;
+            background: radial-gradient(circle, rgba(0,0,0,0.4) 0%, rgba(0,0,0,1) 90%), url('https://images.unsplash.com/photo-1523398002811-999ca8dec234?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
             background-size: cover;
             background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 0 20px;
-            margin-top: 60px;
+            flex-direction: column;
+            padding: 20px;
+            margin-top: 40px;
         }
 
-        .hero-content h1 {
+        .hero h1 {
             font-family: 'Teko', sans-serif;
-            font-size: clamp(3.5rem, 8vw, 7rem);
-            line-height: 0.9;
+            font-size: clamp(4rem, 10vw, 8rem);
+            line-height: 0.85;
             text-transform: uppercase;
-            margin-bottom: 20px;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            margin-bottom: 10px;
+            background: -webkit-linear-gradient(#fff, #666);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .hero-content p {
+        .hero p {
             font-size: 1.2rem;
-            color: var(--text-sec);
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 40px;
+            color: var(--accent);
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+            font-weight: 700;
         }
 
-        .btn-gold {
-            padding: 15px 40px;
-            background: var(--accent);
-            color: black;
+        .cta-btn {
+            padding: 15px 50px;
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
             font-weight: 800;
             text-transform: uppercase;
-            border: none;
             cursor: pointer;
             transition: 0.3s;
-            letter-spacing: 1px;
-            clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+            font-size: 1rem;
+            letter-spacing: 2px;
         }
 
-        .btn-gold:hover {
-            background: white;
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        .cta-btn:hover {
+            background: var(--accent);
+            color: black;
+            box-shadow: 0 0 30px var(--accent-glow);
         }
 
-        /* --- CATÁLOGO --- */
-        .catalog { padding: 80px 5%; }
-
-        .section-title {
-            font-family: 'Teko', sans-serif;
-            font-size: 3rem;
-            text-transform: uppercase;
-            margin-bottom: 50px;
-            border-left: 5px solid var(--accent);
-            padding-left: 20px;
+        /* --- COUNTDOWN (DROP) --- */
+        .drop-section {
+            background: #111;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid #222;
+            border-bottom: 1px solid #222;
         }
+        
+        .countdown-title { color: var(--gray); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 10px; }
+        .timer { font-family: 'Teko'; font-size: 3rem; color: white; display: flex; justify-content: center; gap: 20px; }
+        .time-box span { display: block; font-size: 0.8rem; color: var(--accent); }
+
+        /* --- CATEGORIAS --- */
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 50px 5%;
+            flex-wrap: wrap;
+        }
+
+        .cat-btn {
+            padding: 10px 30px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .cat-btn:hover, .cat-btn.active { background: var(--accent); color: black; border-color: var(--accent); }
+
+        /* --- GRID PRODUCTOS --- */
+        .products-section { padding: 0 5% 80px; }
+        .section-header { margin-bottom: 40px; text-align: center; }
+        .section-header h2 { font-family: 'Teko'; font-size: 3.5rem; text-transform: uppercase; }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
 
-        /* --- TARJETA PRODUCTO --- */
         .card {
-            background: var(--card-bg);
-            position: relative;
-            transition: 0.4s;
+            background: var(--surface);
             border: 1px solid #222;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-        }
-
-        .img-box {
-            height: 400px;
-            overflow: hidden;
             position: relative;
+            overflow: hidden;
+            transition: 0.4s;
         }
 
-        .img-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.5s;
+        .card:hover { transform: translateY(-5px); border-color: var(--accent); }
+
+        .badge-new {
+            position: absolute; top: 10px; left: 10px;
+            background: var(--accent); color: black;
+            padding: 2px 8px; font-weight: 700; font-size: 0.7rem; z-index: 2;
         }
 
-        .card:hover .img-box img { transform: scale(1.1); }
+        .img-wrapper { height: 350px; overflow: hidden; position: relative; }
+        .img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .card:hover .img-wrapper img { transform: scale(1.1); }
 
-        .info-box { padding: 25px; }
+        .info { padding: 20px; }
+        .info h3 { font-size: 1.1rem; margin-bottom: 5px; }
+        .price { color: var(--accent); font-weight: 700; font-size: 1.2rem; }
 
-        .info-box h3 {
-            font-size: 1.3rem;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            font-weight: 800;
-        }
-
-        .price {
-            font-size: 1.5rem;
-            color: var(--accent);
-            font-family: 'Teko', sans-serif;
-            display: block;
-            margin-bottom: 20px;
-        }
-
-        .btn-buy {
-            width: 100%;
-            padding: 12px;
-            background: transparent;
-            border: 1px solid var(--text-sec);
-            color: white;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+        .buy-btn {
+            width: 100%; margin-top: 15px; padding: 12px;
+            background: white; color: black; border: none;
+            font-weight: 800; cursor: pointer; transition: 0.3s;
             text-transform: uppercase;
         }
+        
+        .buy-btn:hover { background: var(--whatsapp); color: white; }
 
-        .btn-buy:hover {
-            background: var(--whatsapp);
-            border-color: var(--whatsapp);
-            color: black;
-        }
+        /* --- TESTIMONIOS --- */
+        .reviews { background: #0a0a0a; padding: 80px 5%; text-align: center; }
+        .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .review-card { background: #111; padding: 30px; border: 1px solid #222; border-radius: 10px; }
+        .stars { color: var(--accent); margin-bottom: 10px; }
+        .client-name { margin-top: 15px; font-weight: 700; font-style: italic; color: #666; }
 
-        /* --- WHATSAPP FLOTANTE --- */
-        .float-wa {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--whatsapp);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
-            z-index: 1001;
-            transition: 0.3s;
-            text-decoration: none;
-        }
-        .float-wa:hover { transform: scale(1.1); }
+        /* --- FAQ --- */
+        .faq { padding: 80px 5%; max-width: 800px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid #333; padding: 20px 0; }
+        .faq-q { font-size: 1.2rem; cursor: pointer; display: flex; justify-content: space-between; }
+        .faq-a { color: #888; margin-top: 10px; display: none; font-size: 0.9rem; }
+        .faq-item.active .faq-a { display: block; animation: fadeIn 0.5s; }
 
         /* --- FOOTER --- */
-        footer {
-            text-align: center;
-            padding: 50px 20px;
-            color: #555;
-            font-size: 0.8rem;
-            border-top: 1px solid #222;
-            margin-top: 50px;
+        footer { background: black; padding: 50px 5%; text-align: center; border-top: 1px solid #222; color: #555; }
+        
+        /* --- WHATSAPP FLOTANTE --- */
+        .wa-float {
+            position: fixed; bottom: 30px; right: 30px;
+            background: var(--whatsapp); color: white;
+            width: 60px; height: 60px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem; box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
+            z-index: 9999; transition: 0.3s; text-decoration: none;
         }
+        .wa-float:hover { transform: scale(1.1) rotate(10deg); }
 
+        /* MOBILE */
         @media (max-width: 768px) {
-            .hero-content h1 { font-size: 4rem; }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 3.5rem; }
+            nav { top: 30px; }
         }
     </style>
 </head>
 <body>
 
+    <div class="marquee-container">
+        <div class="marquee-content">
+            ENVÍOS GRATIS EN BOGOTÁ POR COMPRAS SUPERIORES A $200.000 • PAGO CONTRA ENTREGA DISPONIBLE • CALIDAD PREMIUM GARANTIZADA • EL VIEJO HEVER STORE • 
+            ENVÍOS GRATIS EN BOGOTÁ POR COMPRAS SUPERIORES A $200.000 • PAGO CONTRA ENTREGA DISPONIBLE • CALIDAD PREMIUM GARANTIZADA • EL VIEJO HEVER STORE •
+        </div>
+    </div>
+
     <nav>
         <div class="brand">EL VIEJO <span>HEVER</span></div>
-        <div class="menu-icon"><i class="fas fa-bars"></i></div>
+        <div class="nav-links">
+            <a href="#coleccion">Colección</a>
+            <a href="#reviews">Testimonios</a>
+            <a href="#faq">Preguntas</a>
+        </div>
+        <i class="fas fa-shopping-bag" style="color:white; font-size: 1.2rem;"></i>
     </nav>
 
-    <header class="hero">
-        <div class="hero-content">
-            <p>Colección 2024 / Bogotá</p>
-            <h1>Viste con<br>Autoridad</h1>
-            <button class="btn-gold" onclick="location.href='#coleccion'">Ver Catálogo</button>
-        </div>
+    <header class="hero animate__animated animate__fadeIn">
+        <p>STREETWEAR BOGOTÁ D.C.</p>
+        <h1>RESPETO Y<br>ESTILO</h1>
+        <button class="cta-btn" onclick="document.getElementById('coleccion').scrollIntoView()">VER CATÁLOGO</button>
     </header>
 
-    <section class="catalog" id="coleccion">
-        <h2 class="section-title">Últimos Drops</h2>
+    <section class="drop-section">
+        <div class="countdown-title">PRÓXIMO LANZAMIENTO EXCLUSIVO EN:</div>
+        <div class="timer" id="timer">
+            <div>02<span>DÍAS</span></div> : 
+            <div>14<span>HRS</span></div> : 
+            <div>35<span>MIN</span></div>
+        </div>
+    </section>
+
+    <div class="categories">
+        <button class="cat-btn active">TODO</button>
+        <button class="cat-btn">CAMISETAS</button>
+        <button class="cat-btn">HOODIES</button>
+        <button class="cat-btn">GORRAS</button>
+    </div>
+
+    <section class="products-section" id="coleccion">
+        <div class="section-header">
+            <h2>NUEVO INVENTARIO</h2>
+        </div>
 
         <div class="grid">
             <div class="card">
-                <div class="img-box">
-                    <img src="https://images.unsplash.com/photo-1617114919297-3c8ddbec014e?q=80&w=1887&auto=format&fit=crop" alt="Camiseta">
+                <span class="badge-new">NEW</span>
+                <div class="img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?q=80&w=1887&auto=format&fit=crop" alt="Camiseta">
                 </div>
-                <div class="info-box">
-                    <h3>Oversize "Patrón" Negra</h3>
-                    <span class="price">$85.000 COP</span>
-                    <button class="btn-buy" onclick="comprarWsp('Oversize Patrón Negra', '85.000')">
-                        <i class="fab fa-whatsapp"></i> Comprar
-                    </button>
+                <div class="info">
+                    <h3>Oversize "El Patrón" Black</h3>
+                    <div class="price">$85.000 COP</div>
+                    <button class="buy-btn" onclick="comprar('Camiseta Oversize El Patrón', '85.000')">COMPRAR AHORA</button>
                 </div>
             </div>
 
             <div class="card">
-                <div class="img-box">
+                <div class="img-wrapper">
                     <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=2070&auto=format&fit=crop" alt="Hoodie">
                 </div>
-                <div class="info-box">
-                    <h3>Hoodie Signature White</h3>
-                    <span class="price">$140.000 COP</span>
-                    <button class="btn-buy" onclick="comprarWsp('Hoodie Signature White', '140.000')">
-                        <i class="fab fa-whatsapp"></i> Comprar
-                    </button>
+                <div class="info">
+                    <h3>Hoodie Signature Viego</h3>
+                    <div class="price">$140.000 COP</div>
+                    <button class="buy-btn" onclick="comprar('Hoodie Signature Viego', '140.000')">COMPRAR AHORA</button>
                 </div>
             </div>
 
             <div class="card">
-                <div class="img-box">
-                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=1936&auto=format&fit=crop" alt="Chaqueta">
+                <span class="badge-new">HOT</span>
+                <div class="img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=1936&auto=format&fit=crop" alt="Jacket">
                 </div>
-                <div class="info-box">
+                <div class="info">
                     <h3>Bomber Jacket Elite</h3>
-                    <span class="price">$210.000 COP</span>
-                    <button class="btn-buy" onclick="comprarWsp('Bomber Jacket Elite', '210.000')">
-                        <i class="fab fa-whatsapp"></i> Comprar
-                    </button>
+                    <div class="price">$210.000 COP</div>
+                    <button class="buy-btn" onclick="comprar('Bomber Jacket Elite', '210.000')">COMPRAR AHORA</button>
+                </div>
+            </div>
+
+             <div class="card">
+                <div class="img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1780&auto=format&fit=crop" alt="Camiseta Blanca">
+                </div>
+                <div class="info">
+                    <h3>Oversize White Pure</h3>
+                    <div class="price">$80.000 COP</div>
+                    <button class="buy-btn" onclick="comprar('Oversize White Pure', '80.000')">COMPRAR AHORA</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <a href="https://wa.me/573023195631" class="float-wa" target="_blank">
+    <section class="reviews" id="reviews">
+        <h2 style="font-family:'Teko'; font-size: 3rem; text-transform:uppercase;">Lo que dicen los parceros</h2>
+        <div class="review-grid">
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"La calidad de las telas es otro nivel. El pedido me llegó al día siguiente en Bogotá. Recomendadísimo el Viego Hever."</p>
+                <div class="client-name">- Santiago M.</div>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"Los diseños están brutales, nada que envidiarle a marcas gringas. Ya tengo tres hoodies y no destiñen."</p>
+                <div class="client-name">- Felipe R.</div>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"Excelente atención por WhatsApp, me ayudaron con la talla exacta. Firme con la marca."</p>
+                <div class="client-name">- Camilo J.</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq" id="faq">
+        <h2 style="text-align: center; font-family:'Teko'; font-size: 3rem; margin-bottom: 30px;">DUDAS FRECUENTES</h2>
+        
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-q">¿Hacen envíos a todo el país? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-a">Sí parce, enviamos a cualquier ciudad de Colombia por Interrapidisimo o Servientrega.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-q">¿Cuánto se demora mi pedido? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-a">En ciudades principales de 1 a 3 días hábiles. Resto del país hasta 5 días.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-q">¿Qué medios de pago aceptan? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-a">Aceptamos Nequi, Daviplata, Bancolombia y Efectivo contra entrega (solo Bogotá).</div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="brand" style="font-size: 1.5rem; margin-bottom: 20px;">EL VIEJO <span>HEVER</span></div>
+        <p>Calle Falsa 123, Bogotá D.C. - Colombia</p>
+        <p>Instagram: @ElViejoHeverOficial</p>
+        <br>
+        <p style="font-size: 0.7rem; opacity: 0.5;">&copy; 2024 HEVER INC. Todos los derechos reservados.</p>
+    </footer>
+
+    <a href="https://wa.me/573023195631" class="wa-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <footer>
-        <p>&copy; 2024 EL VIEJO HEVER STORE. Todos los derechos reservados.</p>
-        <p>Bogotá, Colombia</p>
-    </footer>
-
     <script>
-        // CONFIGURACIÓN DE WHATSAPP (NÚMERO DE HEVER)
-        const CELULAR_HEVER = "573023195631"; 
+        const CELULAR = "573023195631"; 
 
-        function comprarWsp(producto, precio) {
-            // Mensaje automático
-            let mensaje = `¡Oelo Viejo Hever! 👋\n\nMe interesa este artículo:\n🧥 *${producto}*\n💰 Precio: $${precio}\n\n¿Tienes talla disponible y cómo hacemos para el pago?`;
-            
-            // Crear Link
-            let url = `https://wa.me/${CELULAR_HEVER}?text=${encodeURIComponent(mensaje)}`;
-            
-            // Redirigir
+        // Función de compra
+        function comprar(producto, precio) {
+            let mensaje = `¡Qué más Viejo Hever! 🔥\n\nEstoy interesado en comprar:\n🛒 *${producto}*\n💸 Precio: $${precio}\n\n¿Me confirmas disponibilidad y cuenta para transferir?`;
+            let url = `https://wa.me/${CELULAR}?text=${encodeURIComponent(mensaje)}`;
             window.open(url, '_blank');
         }
-    </script>
 
+        // Toggle FAQ
+        function toggleFaq(element) {
+            element.classList.toggle('active');
+        }
+
+        // Animación Scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(sec => {
+                const top = window.scrollY;
+                const offset = sec.offsetTop - 500;
+                if (top >= offset) {
+                    sec.classList.add('animate__animated', 'animate__fadeInUp');
+                }
+            });
+        });
+
+        // Cuenta Regresiva Falsa (Ciclo infinito cada 3 días)
+        function updateTimer() {
+            // Esto es solo visual, puedes poner una fecha real
+            const now = new Date();
+            const hours = 23 - now.getHours();
+            const minutes = 59 - now.getMinutes();
+            const seconds = 59 - now.getSeconds();
+            
+            document.getElementById('timer').innerHTML = 
+                `<div>02<span>DÍAS</span></div> : <div>${hours}<span>HRS</span></div> : <div>${minutes}<span>MIN</span></div>`;
+        }
+        setInterval(updateTimer, 1000);
+        updateTimer();
+    </script>
 </body>
 </html>
